@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "name": "Emergency Service ",
+        "price": 5000,
+        "description": "Our emergency serive is open for 24/7 .Only You gust to call us.we Provide all kind of required treatment .we also provide ambulence service",
+        "img": "https://i.ibb.co/pzSJBv6/emergency-final.jpg",
+        "incharge": "Atif Abrar",
+        "mobile": "1710009999"
+    },
+    {
+        "id": 2,
+        "name": "Ward Service ",
+        "price": 3000,
+        "description": "Our world class ward care wservice will give you a very much comport and best medical experience.this package is very much economical and handy .we h Handle with care.  ",
+        "img": "https://i.ibb.co/g4q5GF2/1-ward.jpg",
+        "incharge": "Habibur Rahman",
+        "mobile": "16838435643"
+    },
+    {
+        "id": 3,
+        "name": "Pregnancy Care ",
+        "price": 7000,
+        "description": "Pregnancy Care  is essential for protecting the health of women and their unborn children. Through this form of preventive health care, women can learn from skilled health personnel about healthy behaviors duringtetanus.Our Doctors give Advice during Pregnency Peroid and also test and heath comdition regularly ",
+        "img": "https://i.ibb.co/hVT402J/4-pregnecy-care.jpg",
+        "incharge": "Ema Watson",
+        "mobile": "+157436453"
+    },
+    {
+        "id": 4,
+        "name": "Occupational Therapy ",
+        "price": 4000,
+        "description": " Occupational therapy (OT) is a branch of health care that helps people of all ages who have physical, sensory, or cognitive problems Occupational therapists help with barriers that affect a person's emotional, social, and physical needs",
+        "img": "https://i.ibb.co/2tPF9mf/2-Occupational-therapy.jpg",
+        "incharge": "Dr Linda Martin",
+        "mobile": "+1857436453"
+    },
+    {
+        "id": 5,
+        "name": "Physiotherapy ",
+        "price": 2500,
+        "description": " Physiotherapy helps to restore movement and function when someone is affected by injury, illness or disability. It can also help to reduce your risk of injury or illness in the future.It takes a holistic approach that involves the patient directly in their own care.",
+        "img": "https://i.ibb.co/6DbyNjY/6-physcothera.jpg",
+        "incharge": "Angela Markel",
+        "mobile": "+1153636784"
+    },
+    {
+        "id": 6,
+        "name": "Cancer Care ",
+        "price": 20000,
+        "description": "Cancer Care Services’ team provides caring, compassionate, and individualized support to each client. Our licensed social workers eagerly connect cancer patients, caregivers, and survivors with resources to meet their financial, emotional, and social needs in order to reduce the distress caused by cancer.",
+        "img": "https://i.ibb.co/K7WPdD8/3-cancer-carer.jpg",
+        "incharge": "Cholee decer",
+        "mobile": "+019234345"
+    }
+]
