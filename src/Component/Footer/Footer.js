@@ -5,9 +5,15 @@ const Footer = () => {
         <div>
             <footer>
 
-                <p className="bg-success text-white text-center">  ©  Wellbeign Hospital <i className="fas fa-clinic-medical "></i>
+                <p className="bg-success text-white text-center">  ©  Wellbeing Hospital <i className="fas fa-clinic-medical "></i>
+
+                    <br /><span><i class="fab fa-facebook-f"></i>   </span> <span>   <i class="fab fa-twitter"></i>
+
+                    </span> <span>  <i class="fab fa-youtube"></i>
+
+                    </span>
                 </p>
-                <p></p>
+
             </footer>
         </div >
 
