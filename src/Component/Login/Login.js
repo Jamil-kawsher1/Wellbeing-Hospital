@@ -3,10 +3,11 @@ import useAuth from '../../Hooks/useAuth';
 
 
 const Login = () => {
-    const { SignInWithGoogle, isLoading, signInWithGithub, user } = useAuth();
+    const { SignInWithGoogle, isLoading, signInWithGithub, user, userSignup, singInwithPasswordMail } = useAuth();
     const [isAlredyUser, setIsAlredyUser] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
 
 
     const handleCheckBox = e => {
@@ -23,8 +24,20 @@ const Login = () => {
         setPassword(e.target.value);
 
     }
+    const getName = e => {
+        setName(e.target.value);
+    }
     const handleRegistration = () => {
         console.log("Resitiration clicked");
+        if (isAlredyUser === true) {
+            singInwithPasswordMail(email, password);
+
+        }
+        else {
+            userSignup(name, email, password);
+        }
+        console.log(email, password, name);
+
 
     }
 
@@ -57,7 +70,7 @@ const Login = () => {
 
                                 {
                                     !isAlredyUser && <div>
-                                        <input type="text" className="form-control mb-3" id="inputEmail3" placeholder="Name" />
+                                        <input type="text" onBlur={getName} className="form-control mb-3" id="inputEmail3" placeholder="Name" />
                                     </div>
                                 }
                                 <div>
