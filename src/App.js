@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Header from './Component/Header/Header';
 import Navigation from './Navigation/Navigation';
 import Services from './Component/Services/Services';
+import Footer from './Component/Footer/Footer';
 
 function App() {
 
@@ -17,7 +18,7 @@ function App() {
             <Navigation></Navigation>
             <Header></Header>
             <Services></Services>
-
+            <Footer></Footer>
           </Route>
 
         </Switch>

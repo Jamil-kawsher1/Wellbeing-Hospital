@@ -1,10 +1,16 @@
 import React from 'react';
-
+import './Footer.css'
 const Footer = () => {
     return (
         <div>
-            <h1>This is Footer</h1>
-        </div>
+            <footer>
+
+                <p className="bg-success text-white text-center">  ©  Wellbeign Hospital <i className="fas fa-clinic-medical "></i>
+                </p>
+                <p></p>
+            </footer>
+        </div >
+
     );
 };
 
