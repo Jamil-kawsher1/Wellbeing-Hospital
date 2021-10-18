@@ -1,11 +1,11 @@
-import React, { memo } from 'react';
+import React from 'react';
 
-const Contact = memo(() => {
+const Contact = () => {
     return (
         <div>
             <h1>This is Contact</h1>
         </div>
     );
-});
+};
 
 export default Contact;
