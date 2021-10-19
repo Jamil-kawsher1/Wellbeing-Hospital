@@ -1,11 +1,13 @@
 import { signInWithEmailAndPassword, updateProfile, createUserWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, getAuth, signInWithPopup, signOut, GithubAuthProvider } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { Alert } from "react-bootstrap";
 import initializeAuthentication from "../Firebase/firebase.init";
 initializeAuthentication();
 const useFirebase = () => {
 
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+    const [error, setEroor] = useState('');
     const SignInWithGoogle = () => {
         setIsLoading(true);
         const googleProvider = new GoogleAuthProvider();
@@ -56,7 +58,7 @@ const useFirebase = () => {
 
                 const errorMessage = error.message;
 
-                console.log(errorMessage);
+                setEroor(errorMessage);
             })
             .finally(() => setIsLoading(false))
 
@@ -72,15 +74,21 @@ const useFirebase = () => {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
+
                 if (user.displayName === null) {
 
                     updateUserInfo(name);
+
                 }
+
+
+                // logOut();
                 // ...
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                setEroor(errorMessage);
                 // ..
             });
 
@@ -116,6 +124,7 @@ const useFirebase = () => {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
+                setEroor(errorMessage);
             });
     }
 
@@ -160,6 +169,7 @@ const useFirebase = () => {
         userSignup,
         singInwithPasswordMail,
         updateUserInfo,
+        error,
     }
 }
 export default useFirebase;

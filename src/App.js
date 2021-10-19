@@ -11,6 +11,8 @@ import AuthProvider from './Context/AuthProvider';
 import Doctors from './Component/Doctors/Doctors';
 import ContactUs from './Component/ContactUS/ContactUs';
 import PrivateRoute from './Component/PrivateRoute/PrivateRoute';
+import Details from './Component/Details/Details';
+import NotFound from './Component/NotFound/NotFound';
 
 function App() {
 
@@ -20,43 +22,48 @@ function App() {
       <AuthProvider>
 
         <BrowserRouter>
+          <Navigation></Navigation>
           <Switch>
             <Route path="/home">
-              <Navigation></Navigation>
+
               <Header></Header>
               <Services></Services>
-              <Footer></Footer>
+
 
             </Route>
 
             <Route exact path="/">
-              <Navigation></Navigation>
+
               <Header></Header>
               <Services></Services>
-              <Footer></Footer>
+
             </Route>
 
             <Route path="/login">
-              <Navigation></Navigation>
-              <Login></Login>
-              <Footer></Footer>
-            </Route>
-            <PrivateRoute path="/details/:serviceId" >
 
+              <Login></Login>
+
+            </Route>
+
+            <PrivateRoute path="/details/:serviceId" >
+              <Details></Details>
 
             </PrivateRoute>
             <PrivateRoute path="/doctors">
-              <Navigation></Navigation>
+
               <Doctors></Doctors>
-              <Footer></Footer>
+
             </PrivateRoute>
             <PrivateRoute path="/contact">
-              <Navigation></Navigation>
-              <ContactUs></ContactUs>
-              <Footer></Footer>
-            </PrivateRoute>
 
+              <ContactUs></ContactUs>
+
+            </PrivateRoute>
+            <Route path='*'>
+              <NotFound></NotFound>
+            </Route>
           </Switch>
+          <Footer></Footer>
         </BrowserRouter>
       </AuthProvider>
     </div>

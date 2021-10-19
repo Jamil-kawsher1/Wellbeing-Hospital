@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import useAuth from '../../Hooks/useAuth';
 
 
 const Login = () => {
-    const { updateUserInfo, SignInWithGoogle, isLoading, signInWithGithub, user, userSignup, singInwithPasswordMail } = useAuth();
+    const { error, updateUserInfo, SignInWithGoogle, isLoading, signInWithGithub, user, userSignup, singInwithPasswordMail, logOut } = useAuth();
     const [isAlredyUser, setIsAlredyUser] = useState(false);
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
+    useEffect(() => {
+        if (user?.email != null && user.displayName == null) {
+            reload();
+        }
 
+    }, [user.displayName])
 
     const handleCheckBox = e => {
 
@@ -30,6 +35,7 @@ const Login = () => {
     }
     const handleRegistration = () => {
         console.log("Resitiration clicked");
+
         if (isAlredyUser === true) {
             singInwithPasswordMail(email, password);
 
@@ -37,10 +43,17 @@ const Login = () => {
         else {
             userSignup(name, email, password);
 
+
+
         }
-        console.log(email, password, name);
+        if (user.email != null && user.displayName === null) {
+            window.location.reload();
+        }
 
+    }
 
+    const reload = () => {
+        window.location.reload()
     }
 
     return (
@@ -63,7 +76,13 @@ const Login = () => {
                             </div>
 
 
+
+
                         </div>
+                        {user.email && isAlredyUser && <p className="text-success">Login success</p>}
+                        {user.email && !isAlredyUser && user.displayName === null && < p className="text-success">Registration successfull.Please Reloads page!!  </p>}
+                        {error && <p>{error}</p>}
+
 
 
                         <div className="d-flex flex-column gap-3 justify-content-center mt-5 m-3" >
@@ -72,15 +91,15 @@ const Login = () => {
 
                                 {
                                     !isAlredyUser && <div>
-                                        <input type="text" onBlur={getName} className="form-control mb-3" id="inputEmail3" placeholder="Name" />
+                                        <input type="text" onBlur={getName} className="form-control mb-3" id="name" placeholder="Name" />
                                     </div>
                                 }
                                 <div>
 
-                                    <input onBlur={getEmail} type="email" className="form-control mb-3" placeholder="Email" />
+                                    <input onBlur={getEmail} type="email" className="form-control mb-3" id="email" placeholder="Email" />
                                 </div>
                                 <div>
-                                    <input onBlur={getPassword} type="password" className="form-control mb-3" id="inputEmail3" placeholder="Paswword" />
+                                    <input onBlur={getPassword} type="password" className="form-control mb-3" id="password" placeholder="Paswword" />
                                 </div>
                             </form>
                             <div>
@@ -89,8 +108,11 @@ const Login = () => {
                             </div>
 
                             <div>
-                                <input onChange={handleCheckBox} type="checkbox" className="form-check-input" id="exampleCheck1" />
-                                <label className="form-check-label" htmlFor="exampleCheck1">   Already Registered?</label>
+                                <input onChange={handleCheckBox} type="checkbox" className=" size" id="exampleCheck1" />
+                                <label className="form-check-label ms-1 text-dark" htmlFor="exampleCheck1">  Already Registered?</label>
+
+
+
                             </div>
 
 
@@ -106,7 +128,7 @@ const Login = () => {
 
 
             </div>
-        </div>
+        </div >
     );
 };
 
