@@ -3,8 +3,9 @@ import useAuth from '../../Hooks/useAuth';
 
 
 const Login = () => {
-    const { SignInWithGoogle, isLoading, signInWithGithub, user, userSignup, singInwithPasswordMail } = useAuth();
+    const { updateUserInfo, SignInWithGoogle, isLoading, signInWithGithub, user, userSignup, singInwithPasswordMail } = useAuth();
     const [isAlredyUser, setIsAlredyUser] = useState(false);
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
@@ -35,6 +36,7 @@ const Login = () => {
         }
         else {
             userSignup(name, email, password);
+
         }
         console.log(email, password, name);
 

@@ -72,6 +72,10 @@ const useFirebase = () => {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
+                if (user.displayName === null) {
+
+                    updateUserInfo(name);
+                }
                 // ...
             })
             .catch((error) => {
@@ -81,17 +85,19 @@ const useFirebase = () => {
             });
 
 
-        updateUserInfo(name);
+
 
     }
 
     const updateUserInfo = (name) => {
         const auth = getAuth();
         updateProfile(auth.currentUser, {
-            displayName: { name },
+            displayName: `${name}`,
+
         }).then(() => {
             // Profile updated!
             // ...
+
         }).catch((error) => {
             // An error occurred
             // ...
@@ -153,6 +159,7 @@ const useFirebase = () => {
         signInWithGithub,
         userSignup,
         singInwithPasswordMail,
+        updateUserInfo,
     }
 }
 export default useFirebase;
