@@ -90,7 +90,7 @@ const Login = () => {
 
                             <div>
                                 <input onChange={handleCheckBox} type="checkbox" className="form-check-input" id="exampleCheck1" />
-                                <label className="form-check-label ms-1" htmlFor="exampleCheck1">   Already Registered?</label>
+                                <label className="form-check-label" htmlFor="exampleCheck1">   Already Registered?</label>
                             </div>
 
 

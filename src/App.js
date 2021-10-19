@@ -10,6 +10,7 @@ import Login from './Component/Login/Login';
 import AuthProvider from './Context/AuthProvider';
 import Doctors from './Component/Doctors/Doctors';
 import ContactUs from './Component/ContactUS/ContactUs';
+import PrivateRoute from './Component/PrivateRoute/PrivateRoute';
 
 function App() {
 
@@ -34,22 +35,27 @@ function App() {
               <Services></Services>
               <Footer></Footer>
             </Route>
-            <Route path="/contact">
-
-              <ContactUs></ContactUs>
-            </Route>
 
             <Route path="/login">
               <Navigation></Navigation>
               <Login></Login>
               <Footer></Footer>
             </Route>
+            <PrivateRoute path="/details/:serviceId" >
 
-            <Route path='/doctors'>
+
+            </PrivateRoute>
+            <PrivateRoute path="/doctors">
               <Navigation></Navigation>
               <Doctors></Doctors>
               <Footer></Footer>
-            </Route>
+            </PrivateRoute>
+            <PrivateRoute path="/contact">
+              <Navigation></Navigation>
+              <ContactUs></ContactUs>
+              <Footer></Footer>
+            </PrivateRoute>
+
           </Switch>
         </BrowserRouter>
       </AuthProvider>
