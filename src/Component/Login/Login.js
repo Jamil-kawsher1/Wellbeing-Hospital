@@ -1,20 +1,29 @@
+import { reload } from '@firebase/auth';
 import React, { useEffect, useState } from 'react';
+
+import { useHistory, useLocation } from 'react-router';
 
 import useAuth from '../../Hooks/useAuth';
 
 
 const Login = () => {
+
     const { error, updateUserInfo, SignInWithGoogle, isLoading, signInWithGithub, user, userSignup, singInwithPasswordMail, logOut } = useAuth();
     const [isAlredyUser, setIsAlredyUser] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
+    const location = useLocation();
+    const history = useHistory();
+    const redirect_url = location?.state?.from || '/';
+
+    console.log("came from" + location.state?.from);
     useEffect(() => {
         if (user?.email != null && user.displayName == null) {
-            reload();
+            window.location.reload();
         }
 
-    }, [user.displayName])
+    }, [])
 
     const handleCheckBox = e => {
 
@@ -38,23 +47,32 @@ const Login = () => {
 
         if (isAlredyUser === true) {
             singInwithPasswordMail(email, password);
-
+            if (user.email) {
+                history.push(redirect_url);
+            }
         }
         else {
             userSignup(name, email, password);
-
+            // history.push(redirect_url);
 
 
         }
-        if (user.email != null && user.displayName === null) {
-            window.location.reload();
+        // if (user.email != null && user.displayName === null) {
+        //     window.location.reload();
+        // }
+
+    }
+    const handlegooglesignIn = () => {
+        SignInWithGoogle();
+        if (user.email) {
+            history.push(redirect_url);
         }
 
+
+
     }
 
-    const reload = () => {
-        window.location.reload()
-    }
+
 
     return (
 
@@ -69,7 +87,7 @@ const Login = () => {
 
 
                             <div>
-                                <button onClick={SignInWithGoogle} className='btn btn-danger'><i className="bi bi-google"></i>  Sign in With Google</button>
+                                <button onClick={handlegooglesignIn} className='btn btn-danger'><i className="bi bi-google"></i>  Sign in With Google</button>
                             </div>
                             <div>
                                 <button onClick={signInWithGithub} className='btn btn-dark'><i className="bi bi-github"></i>  Sign in With Github</button>
@@ -80,7 +98,7 @@ const Login = () => {
 
                         </div>
                         {user.email && isAlredyUser && <p className="text-success">Login success</p>}
-                        {user.email && !isAlredyUser && user.displayName === null && < p className="text-success">Registration successfull.Please Reloads page!!  </p>}
+                        {user.email && !isAlredyUser && user.displayName === null && < p className="text-success">Registration successfull.Please Reloads page to see the updated Name info!!  </p>}
                         {error && <p>{error}</p>}
 
 

@@ -3,7 +3,8 @@ import './Footer.css'
 const Footer = () => {
     return (
         <div>
-            <footer >
+            <footer className="bg-success" >
+
 
                 <p className="bg-success text-white text-center">  ©  Wellbeing Hospital <i className="fas fa-clinic-medical "></i>
 

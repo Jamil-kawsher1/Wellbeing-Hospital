@@ -6,6 +6,9 @@ import './Navigation.css';
 
 const Navigation = () => {
     const { user, logOut } = useAuth();
+    // if (user.email != null && user.displayName == null) {
+    //     window.location.reload();
+    // }
     return (
         <div >
             <p className="text-center pt-3"> <i class="fas fa-phone-alt"></i> Call us  +8801648474645</p>
@@ -28,7 +31,7 @@ const Navigation = () => {
                     </Navbar.Collapse>
                     <Navbar.Collapse className="justify-content-end">
                         {user.email ? <Navbar.Text className="text-white">
-                            Signed in as:  {user.displayName} <button className="btn btn-danger" onClick={logOut}>Logout</button>
+                            Signed in as:  {user.displayName || user.email}   <button className="btn btn-danger" onClick={logOut}>Logout</button>
                         </Navbar.Text>
                             : <Nav.Link > <Link to='/login' className='linkstye text-white'>LogIn</Link></Nav.Link>
 
